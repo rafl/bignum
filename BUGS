@@ -1,6 +1,9 @@
 
 Known bugs:
 
+* The testsuite fails when Math::BigIn::Lite v0.04 is installed. This is a
+  problem of Lite, not bignum. Expect Lite to be fixed soon ;)
+
 * perl -Mbignum=t -le 'print 2.0' prints
 
  Loading Math::BigInt::Trace

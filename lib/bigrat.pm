@@ -1,7 +1,7 @@
 package bigrat;
 require 5.005;
 
-$VERSION = '0.02';
+$VERSION = '0.03';
 use Exporter;
 @ISA =       qw( Exporter );
 @EXPORT_OK = qw( ); 
@@ -13,7 +13,7 @@ use strict;
 # These are all alike, and thus faked by AUTOLOAD
 
 my @faked = qw/round_mode accuracy precision div_scale/;
-use vars qw/$AUTOLOAD/;
+use vars qw/$AUTOLOAD $_lite/;		# _lite for testsuite
 
 sub AUTOLOAD
   {
@@ -61,21 +61,17 @@ sub import
   {
   my $self = shift;
 
+  # see also bignum->import() for additional comments
+
   # some defaults
   my $lib = 'Calc'; my $upgrade = 'Math::BigFloat';
 
   my @import = ( ':constant' );				# drive it w/ constant
   my @a = @_; my $l = scalar @_; my $j = 0;
+  my ($a,$p);
   my ($ver,$trace);					# version? trace?
   for ( my $i = 0; $i < $l ; $i++,$j++ )
     {
-#    if ($_[$i] eq ':constant')
-#      {
-#      # this causes overlord er load to step in
-#      #push @import, ':constant';
-#      overload::constant integer => sub { Math::BigInt->new(shift) };
-#      splice @a, $j, 1; $j --;
-#      }
     if ($_[$i] eq 'upgrade')
       {
       # this causes upgrading
@@ -83,7 +79,7 @@ sub import
       my $s = 2; $s = 1 if @a-$j < 2;	# avoid "can not modify non-existant..."
       splice @a, $j, $s; $j -= $s;
       }
-    elsif ($_[$i] =~ /^lib$/i)
+    elsif ($_[$i] =~ /^(l|lib)$/)
       {
       # this causes a different low lib to take care...
       $lib = $_[$i+1] || '';
@@ -100,27 +96,49 @@ sub import
       $trace = 1;
       splice @a, $j, 1; $j --;
       }
+    else
+      {
+      die ("unknown option $_[$i]");
+      }
     }
-  push @import, upgrade => $upgrade, lib => $lib;
+  my $class;
+  $_lite = 0;                                   # using M::BI::L ?
   if ($trace)
     {
-    require Math::BigInt::Trace;
+    require Math::BigInt::Trace; $class = 'Math::BigInt::Trace';
+    $upgrade = 'Math::BigFloat::Trace';
+    print STDERR "Loading $class";
     }
   else
     {
-    require Math::BigInt;
+    # see if we can find Math::BigInt::Lite
+    if (!defined $a && !defined $p)             # rounding won't work to well
+      {
+      eval 'require Math::BigInt::Lite;';
+      if ($@ eq '')
+        {
+        @import = ( );                          # :constant in Lite, not MBI
+        Math::BigInt::Lite->import( ':constant' );
+        $_lite= 1;                              # signal okay
+        }
+      }
+    require Math::BigInt if $_lite == 0;        # not already loaded?
+    $class = 'Math::BigInt';                    # regardless of MBIL or not
     }
-  Math::BigInt->import(@import);
+  # Math::BigInt::Trace or plain Math::BigInt
+  $class->import(@import, upgrade => $upgrade, lib => $lib);
+
   require Math::BigFloat;
   Math::BigFloat->import( upgrade => 'Math::BigRat', ':constant' );
   require Math::BigRat;
   if ($ver)
     {
-    print "Math::BigInt\t v$Math::BigInt::VERSION";
+    print "Math::BigInt::Lite\t v$Math::BigInt::Lite::VERSION\n" if $_lite;  
+    print "Math::BigInt\t\t v$Math::BigInt::VERSION";
     my $config = Math::BigInt->config();
     print " lib => $config->{lib} v$config->{lib_version}\n";
-    print "Math::BigFloat\t v$Math::BigFloat::VERSION\n";
-    print "Math::BigRat\t v$Math::BigRat::VERSION\n";
+    print "Math::BigFloat\t\t v$Math::BigFloat::VERSION\n";
+    print "Math::BigRat\t\t v$Math::BigRat::VERSION\n";
     exit;
     }
   }
@@ -148,6 +166,19 @@ respectively.
 
 Other than L<bignum>, this module upgrades to Math::BigRat, meaning that
 instead of 2.5 you will get 2+1/2 as output.
+
+=head2 MODULES USED
+
+C<bigrat> is just a thin wrapper around various modules of the Math::BigInt
+family. Think of it as the head of the family, who runs the shop, and orders
+the others to do the work.
+
+The following modules are currently used by bignum:
+
+        Math::BigInt::Lite      (for speed, and only if it is loadable)
+        Math::BigInt
+        Math::BigFloat
+        Math::BigRat
 
 =head2 MATH LIBRARY
 

@@ -1,7 +1,7 @@
 package bignum;
 require 5.005;
 
-$VERSION = '0.07';
+$VERSION = '0.08';
 use Exporter;
 @ISA =       qw( Exporter );
 @EXPORT_OK = qw( ); 
@@ -13,7 +13,7 @@ use strict;
 # These are all alike, and thus faked by AUTOLOAD
 
 my @faked = qw/round_mode accuracy precision div_scale/;
-use vars qw/$AUTOLOAD/;
+use vars qw/$AUTOLOAD $_lite/;		# _lite for testsuite
 
 sub AUTOLOAD
   {
@@ -72,13 +72,6 @@ sub import
   my ($a,$p);						# accuracy, precision
   for ( my $i = 0; $i < $l ; $i++,$j++ )
     {
-#    if ($_[$i] eq ':constant')
-#      {
-#      # this causes overlord er load to step in
-#      #push @import, ':constant';
-#      overload::constant integer => sub { Math::BigInt->new(shift) };
-#      splice @a, $j, 1; $j --;
-#      }
     if ($_[$i] eq 'upgrade')
       {
       # this causes upgrading
@@ -93,7 +86,7 @@ sub import
       my $s = 2; $s = 1 if @a-$j < 2;	# avoid "can not modify non-existant..."
       splice @a, $j, $s; $j -= $s; $i++;
       }
-    elsif ($_[$i] =~ /^lib$/i)
+    elsif ($_[$i] =~ /^(l|lib)$/)
       {
       # this causes a different low lib to take care...
       $lib = $_[$i+1] || '';
@@ -125,6 +118,7 @@ sub import
     else { die "unknown option $_[$i]"; }
     }
   my $class;
+  $_lite = 0;					# using M::BI::L ?
   if ($trace)
     {
     require Math::BigInt::Trace; $class = 'Math::BigInt::Trace';
@@ -133,8 +127,21 @@ sub import
     }
   else
     {
-    require Math::BigInt; $class = 'Math::BigInt';
-    }
+    # see if we can find Math::BigInt::Lite
+    if (!defined $a && !defined $p)		# rounding won't work to well
+      {
+      eval 'require Math::BigInt::Lite;';
+      if ($@ eq '')
+        {
+        @import = ( );				# :constant in Lite, not MBI
+        Math::BigInt::Lite->import( ':constant' );
+        $_lite= 1;				# signal okay
+        }
+      }
+    require Math::BigInt if $_lite == 0;	# not already loaded?
+    $class = 'Math::BigInt';			# regardless of MBIL or not
+    } 
+  # Math::BigInt::Trace or plain Math::BigInt
   $class->import(@import, upgrade => $upgrade, lib => $lib);
 
   if ($trace)
@@ -153,10 +160,11 @@ sub import
   bignum->precision($p) if defined $p;
   if ($ver)
     {
-    print "Math::BigInt\t v$Math::BigInt::VERSION";
+    print "Math::BigInt::Lite\t v$Math::BigInt::Lite::VERSION\n" if $_lite;
+    print "Math::BigInt\t\t v$Math::BigInt::VERSION";
     my $config = Math::BigInt->config();
     print " lib => $config->{lib} v$config->{lib_version}\n";
-    print "Math::BigFloat\t v$Math::BigFloat::VERSION\n";
+    print "Math::BigFloat\t\t v$Math::BigFloat::VERSION\n";
     exit;
     }
   }
@@ -178,7 +186,7 @@ bignum - Transparent BigNumber support for Perl
 
 =head1 DESCRIPTION
 
-All operators (inlcuding basic math operations) are overloaded. Integer and
+All operators (including basic math operations) are overloaded. Integer and
 floating-point constants are created as proper BigInts or BigFloats,
 respectively.
 
@@ -195,7 +203,7 @@ The following options exist:
 This sets the accuracy for all math operations. The argument must be greater
 than or equal to zero. See Math::BigInt's bround() function for details.
 
-	perl -Mbignum,a,50 -le 'print sqrt(20)'
+	perl -Mbignum=a,50 -le 'print sqrt(20)'
 
 =item p or precision
 
@@ -204,7 +212,7 @@ integer. Negative values mean a fixed number of digits after the dot, while
 a positive value rounds to this digit left from the dot. 0 or 1 mean round to
 integer. See Math::BigInt's bfround() function for details.
 
-	perl -Mbignum,p,-50 -le 'print sqrt(20)'
+	perl -Mbignum=p,-50 -le 'print sqrt(20)'
 
 =item t or trace
 
@@ -246,13 +254,13 @@ Please see respective module documentation for further details.
 
 =head2 INTERNAL FORMAT
 
-The numbers are stored as objects, and their internas might change at anytime,
+The numbers are stored as objects, and their internals might change at anytime,
 especially between math operations. The objects also might belong to different
 classes, like Math::BigInt, or Math::BigFLoat. Mixing them together, even
 with normal scalars is not extraordinary, but normal and expected.
 
-You should not depend on the internal format, all accesses must go trough
-accessor methods. E.g. looking at $x->{sign} is not a birght idea since there
+You should not depend on the internal format, all accesses must go through
+accessor methods. E.g. looking at $x->{sign} is not a bright idea since there
 is no guaranty that the object in question has such a hashkey, nor is a hash
 underneath at all.
 
@@ -270,17 +278,20 @@ minus infinity. You will get '+inf' when dividing a positive number by 0, and
 
 Since all numbers are now objects, you can use all functions that are part of
 the BigInt or BigFloat API. It is wise to use only the bxxx() notation, and not
-the fxxx() notation, though. This makes you independed on the fact that the
-underlying object might morph into a different class than BigFloat.
+the fxxx() notation, though. This makes it possible that the underlying object
+might morph into a different class than BigFloat.
 
 =head1 MODULES USED
 
+C<bignum> is just a thin wrapper around various modules of the Math::BigInt
+family. Think of it as the head of the family, who runs the shop, and orders
+the others to do the work.
+
 The following modules are currently used by bignum:
 
-	Math::BigInt::Lite	for speed, and only if it is installed)
+	Math::BigInt::Lite	(for speed, and only if it is loadable)
 	Math::BigInt
 	Math::BigFloat
-	Math::BigRat		only by bigrat
 
 =head1 EXAMPLES
 

@@ -35,6 +35,13 @@
 2002-03-05 Tels 0.07
   * new options: a (accuracy) and p (precision)
   * doc and tests improved quite a lot
+2002-03-11 Tels 0.08
+  * doc fixes/types and 'l' is equal to 'lib' (thanx to Dan Sullivan)
+  * added tests for l, lib, and foo (the latter is expected to die)
+  * uses Math::BigInt::Lite when it finds it, otherwise just plain M::BI
+  * added tests for loading of Lite
+  * version output includes Math::BigInt::Lite when it was used
+  * rewritten README and INSTALL document
 
 Please send me test-reports, your experiences with this and your ideas - I love
 to hear about my work!
