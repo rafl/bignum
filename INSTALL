@@ -1,0 +1,52 @@
+###############################################################################
+
+(C) Copyright ..--- ----- ----- ..--- by - . .-.. ... .-.-.-
+
+###############################################################################
+
+This package attempts to make it easier to write scripts that use
+BigInts/BigFloats in a transparent way.
+
+So, the following would print 4.5:
+
+	use bignum;
+
+	print 2 + 2.5,"\n";
+
+The result is a BigFloat, constructed from a BigInt and a BigFloat at
+compile time. That the output resembles Perl's way is intention ;) So the
+
+	use bignum;
+
+is equivalent to:
+
+	use Math::BigInt upgrade => 'Math::BigFloat', ':constant';
+	use Math::BigFloat;
+
+You can also do:
+
+	bignum->accuracy(5);
+
+as an alias to 
+
+	Math::BigInt->accuracy(5);
+	Math::BigFloat->accuracy(5);
+
+###############################################################################
+
+To test, unzip & untar package, then run
+
+	perl Makefile.PL
+	make
+	make test
+	make install		# as root
+
+More information including HTMLified help and benchmark results are
+available under:
+
+	http://bloodgate.com/perl/
+
+Please send me test-reports, your experiences with this and your ideas - I love
+to hear about my work!
+
+Tels <http://bloodgate.com/>

@@ -1,0 +1,39 @@
+
+2002-01-29 Tels 0.01
+  * first version
+2002-01-29 Tels 0.02
+  * AUTOLOAD, cleaned up a bit
+2002-02-10 Tels 0.03
+  * renamed to bignum
+  * added dependency and loading of Math::BigRat
+2002-02-21 Tels 0.04
+  * added :constant to Math::BigFloat loading and tests for it
+  * added v to import to print version and exit:
+
+	te@null:~ > perl -Mbignum=v
+	Math::BigInt     v1.51 lib => Math::BigInt::Calc v0.22
+	Math::BigFloat   v1.28
+	Math::BigRat     v0.02 
+	te@null:~ > perl -Mbignum=v,lib,Pari
+	Math::BigInt     v1.51 lib => Math::BigInt::Pari v1.07
+	Math::BigFloat   v1.28
+	Math::BigRat     v0.02 
+2002-02-24 Tels 0.05
+  * Comes now in two flavours: Normal (bignum) and Rat-flavoured (bigrat)
+	te@null:~ > perl -Mbignum=v
+	Math::BigInt     v1.52 lib => Math::BigInt::Calc v0.23
+	Math::BigFloat   v1.29
+	te@null:~ > perl -Mbigrat=v
+	Math::BigInt     v1.52 lib => Math::BigInt::Calc v0.23
+	Math::BigFloat   v1.29
+	Math::BigRat     v0.02 
+2002-02-26 Tels 0.06
+  * options can now be in short (one letter) or long form
+  * new option: t or trace 
+  * old option: v or version
+  * included Math::BigInt::Trace for trace
+
+Please send me test-reports, your experiences with this and your ideas - I love
+to hear about my work!
+
+Tels <http://bloodgate.com/>

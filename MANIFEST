@@ -1,0 +1,15 @@
+CHANGES
+BUGS
+INSTALL
+README
+LICENSE
+MANIFEST
+TODO
+Makefile.PL
+lib/bignum.pm
+lib/bigrat.pm
+lib/Math/BigInt/Trace.pm
+lib/Math/BigFloat/Trace.pm
+t/bignum.t			# does bignum work?
+t/bigrat.t			# does bigrat work?
+t/trace.t			# does bignum=trace work?
