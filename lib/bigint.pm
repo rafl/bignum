@@ -1,12 +1,13 @@
 package bigint;
 require 5.005;
 
-$VERSION = '0.01';
+$VERSION = '0.02';
 use Exporter;
 @ISA =       qw( Exporter );
 @EXPORT_OK = qw( ); 
 
 use strict;
+use overload;
 
 ############################################################################## 
 
@@ -53,6 +54,46 @@ sub upgrade
 #    $Math::BigInt::upgrade = $_[0];
 #    }
   return $Math::BigInt::upgrade;
+  }
+
+sub _constant
+  {
+  # this takes a floating point constant string and returns it truncated to
+  # integer. For instance, '4.5' => '4', '1.234e2' => '123' etc
+  my $float = shift;
+
+  # some simple cases first
+  return $float if ($float =~ /^[+-]?[0-9]+$/);		# '+123','-1','0' etc
+  return $float 
+    if ($float =~ /^[+-]?[0-9]+\.?[eE]\+?[0-9]+$/);	# 123e2, 123.e+2
+  return '0' if ($float =~ /^[+-]?[0]*\.[0-9]+$/);	# .2, 0.2, -.1
+  if ($float =~ /^[+-]?[0-9]+\.[0-9]*$/)		# 1., 1.23, -1.2 etc
+    {
+    $float =~ s/\..*//;
+    return $float;
+    }
+  my ($mis,$miv,$mfv,$es,$ev) = Math::BigInt::_split(\$float);
+  return $float if !defined $mis; 	# doesn't look like a number to me
+  my $ec = int($$ev);
+  my $sign = $$mis; $sign = '' if $sign eq '+';
+  if ($$es eq '-')
+    {
+    # ignore fraction part entirely
+    if ($ec >= length($$miv))			# 123.23E-4
+      {
+      return '0';
+      }
+    return $sign . substr ($$miv,0,length($$miv)-$ec);	# 1234.45E-2 = 12
+    }
+  # xE+y
+  if ($ec >= length($$mfv))
+    {
+    $ec -= length($$mfv);			
+    return $sign.$$miv.$$mfv if $ec == 0;	# 123.45E+2 => 12345
+    return $sign.$$miv.$$mfv.'E'.$ec; 		# 123.45e+3 => 12345e1
+    }
+  $mfv = substr($$mfv,0,$ec);
+  return $sign.$$miv.$mfv; 			# 123.45e+1 => 1234
   }
 
 sub import 
@@ -136,6 +177,9 @@ sub import
     print " lib => $config->{lib} v$config->{lib_version}\n";
     exit;
     }
+  # we take care of floating point constants, since BigFloat isn't available
+  # and BigInt doesn't like them:
+  overload::constant float => sub { Math::BigInt->new( _constant(shift) ); };
   }
 
 1;

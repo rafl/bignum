@@ -46,6 +46,11 @@
   * added bigint.pm as a better way of perl -MMath::BigInt=:constant
   * tests for that
   * bigrat: some typos
+2002-03-17 Tels 0.10
+  * bigint: handle floating point constants like '4.5', '45e-1', '4.56e1' by
+            truncating them to integer, so:
+    perl -Mbigint -le 'print 4.5+4.5'
+    8
 
 Please send me test-reports, your experiences with this and your ideas - I love
 to hear about my work!

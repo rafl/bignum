@@ -1,7 +1,7 @@
 package bignum;
 require 5.005;
 
-$VERSION = '0.09';
+$VERSION = '0.10';
 use Exporter;
 @ISA =       qw( Exporter );
 @EXPORT_OK = qw( ); 
