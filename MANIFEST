@@ -4,6 +4,7 @@ INSTALL
 README
 LICENSE
 MANIFEST
+SIGNATURE
 TODO
 Makefile.PL
 lib/bigint.pm

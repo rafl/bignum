@@ -1,7 +1,7 @@
 package bigrat;
 require 5.005;
 
-$VERSION = '0.05';
+$VERSION = '0.06';
 use Exporter;
 @ISA		= qw( Exporter );
 @EXPORT_OK	= qw( ); 
@@ -34,6 +34,7 @@ sub AUTOLOAD
           {
           Math::BigInt->$name($_[0]);
           Math::BigFloat->$name($_[0]);
+          return Math::BigRat->$name($_[0]);
           }
         return Math::BigInt->$name();
         };
@@ -87,6 +88,18 @@ sub import
       my $s = 2; $s = 1 if @a-$j < 2;	# avoid "can not modify non-existant..."
       splice @a, $j, $s; $j -= $s;
       }
+    elsif ($_[$i] =~ /^(a|accuracy)$/)
+      {
+      $a = $_[$i+1];
+      my $s = 2; $s = 1 if @a-$j < 2;   # avoid "can not modify non-existant..."
+      splice @a, $j, $s; $j -= $s; $i++;
+      }
+    elsif ($_[$i] =~ /^(p|precision)$/)
+      {
+      $p = $_[$i+1];
+      my $s = 2; $s = 1 if @a-$j < 2;   # avoid "can not modify non-existant..."
+      splice @a, $j, $s; $j -= $s; $i++;
+      }
     elsif ($_[$i] =~ /^(v|version)$/)
       {
       $ver = 1;
@@ -131,6 +144,9 @@ sub import
   require Math::BigFloat;
   Math::BigFloat->import( upgrade => 'Math::BigRat', ':constant' );
   require Math::BigRat;
+
+  bigrat->accuracy($a) if defined $a;
+  bigrat->precision($p) if defined $p;
   if ($ver)
     {
     print "bigrat\t\t\t v$VERSION\n";
@@ -219,6 +235,40 @@ the BigInt or BigFloat API. It is wise to use only the bxxx() notation, and not
 the fxxx() notation, though. This makes you independed on the fact that the
 underlying object might morph into a different class than BigFloat.
 
+=head2 CAVEAT
+
+But a warning is in order. When using the following to make a copy of a number,
+only a shallow copy will be made.
+
+        $x = 9; $y = $x;
+        $x = $y = 7;
+
+Using the copy or the original with overloaded math is okay, e.g. the
+following work:
+
+        $x = 9; $y = $x;
+        print $x + 1, " ", $y,"\n";     # prints 10 9
+
+but calling any method that modifies the number directly will result in
+B<both> the original and the copy beeing destroyed:
+
+        $x = 9; $y = $x;
+        print $x->badd(1), " ", $y,"\n";        # prints 10 10
+
+        $x = 9; $y = $x;
+        print $x->binc(1), " ", $y,"\n";        # prints 10 10
+
+        $x = 9; $y = $x;
+        print $x->bmul(2), " ", $y,"\n";        # prints 18 18
+
+Using methods that do not modify, but testthe contents works:
+
+        $x = 9; $y = $x;
+        $z = 9 if $x->is_zero();                # works fine
+
+See the documentation about the copy constructor and C<=> in overload, as
+well as the documentation in BigInt for further details.
+
 =head1 EXAMPLES
  
 	perl -Mbigrat -le 'print sqrt(33)'
@@ -241,6 +291,6 @@ as L<Math::BigInt::BitVect>, L<Math::BigInt::Pari> and  L<Math::BigInt::GMP>.
 
 =head1 AUTHORS
 
-(C) by Tels L<http://bloodgate.com/> in early 2002.
+(C) by Tels L<http://bloodgate.com/> in early 2002, 2003.
 
 =cut

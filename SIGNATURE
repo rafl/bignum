@@ -1,0 +1,52 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.22.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It would check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+
+SHA1 75170ea9cf37a63bcbee8236d4ee29b974484129 BUGS
+SHA1 0e5ef346a08078608ce9d2eced39468d4d99bf00 CHANGES
+SHA1 79eb2714ac601ef69639106391036c7d341989de INSTALL
+SHA1 d6a6c30ee6d9ba6b9afab8bbf6a25e1b23c744e0 LICENSE
+SHA1 ce35fe62e867fef619d007349471388f8778f2e5 MANIFEST
+SHA1 ea22740fd18ea917e0cb5805f0d9b04341adb60a Makefile.PL
+SHA1 8c630804551c0bb41a1cd03f0c7e9c926e3f86f3 README
+SHA1 ffea651b3975289e76187e8d16e3497d36f754bb TODO
+SHA1 00be5f214bfdc6ec5da910aec62b1fee00d610c1 lib/Math/BigFloat/Trace.pm
+SHA1 dd6afbb42cbe5488433fa4796844eb6955d39b8b lib/Math/BigInt/Trace.pm
+SHA1 28d0a56fef912a8a387a7767f2d0d8c314dcb00a lib/bigint.pm
+SHA1 2aca3f9ddbe57759101d79e4bc2c00107e741f36 lib/bignum.pm
+SHA1 04304b5abf0ebed83cdcb1d996c5deb198159ea2 lib/bigrat.pm
+SHA1 e646e9ef4c73bf8d2cf7cee763c2ea9256fb604b t/bigint.t
+SHA1 0fc42edd1463f8a6ee2364e6b136b022062c19e3 t/bignum.t
+SHA1 ecdbff8ce0099157e59e52f24cb4568db67d3416 t/bigrat.t
+SHA1 d15e56f77d7a8b2b4d04c6725edaaad431951707 t/biinfnan.t
+SHA1 b3917168a617d1f7ef6b7d67b31dc9d7f60e4827 t/bn_lite.t
+SHA1 a1aee41126f0ee4c6ca9de93b52980d50babe62e t/bninfnan.t
+SHA1 5a808b83fdc6977857b9f7fdf87b00a99c48311a t/br_lite.t
+SHA1 1db8e48d01511cae7406eee92fb4328e6b961741 t/brinfnan.t
+SHA1 d9b3b24fbd00b50b7da63f07f1c665951cf89ab4 t/infnan.inc
+SHA1 207829beb0dd35bbac0ea7051852d4e6dc3cb31b t/option_a.t
+SHA1 ed7d301df56da17e4b0cb6609cb8c739ae1b41bf t/option_l.t
+SHA1 5ab9e24919011ad4780078dd83e599063210e6a8 t/option_p.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.2-rc1-SuSE (GNU/Linux)
+Comment: When cryptography is outlawed, bayl bhgynjf jvyy unir cevinpl.
+
+iQEVAwUBPzptx3cLPEOTuEwVAQHF6gf8CVTxXHACP0aX6aU1u1q9p5GofadIICRk
++wtZRfcMftT0VEuBlJ0ks+yKwHpFM3sdJzZ3JGTQk93RyKIFO6NadRcQVWmwjDad
+QiSkaW8TJ8pr4GKoUJg2Ji0Jpss1vONize9wW/IVQOlXG2qWSvK51peW5X0yHudv
+ug+c0f8qTYQys1799GcXa2JZ0sjlARvpJMPXacptaHF/73s3UyBbqy9U1aFkDTTm
+KE31IAA9B9VoHtziBEv8pOdyZuQBj566URbtKi+w4nG/Kc3RGxGhdvxxShb1QbWH
+uEq1fezpXMcP8b1YFn7pKD7k0sbXA72V4rZ9DsoSjKZfwgfM8guM4A==
+=Kphp
+-----END PGP SIGNATURE-----

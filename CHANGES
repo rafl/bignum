@@ -67,6 +67,14 @@
   * added a LOT to the documentation
   * tests don't go "huh" anymore
   * bninfnan.t has the correct setup for testing in the core
+2002-12-12 Tels 0.14a 175 tests (not released)
+  * added doc about shallow copies like $x = $y and method calls
+  * precision()/accuracy()/round_mode() save now one call and are thus faster
+  * bigrat() now calls Math::BigRat->precision|accuracy|round_mode, too
+  * distribution is now signed, go to http://bloodgate.com/tels.asc for key
+2003-07-04 Tels 0.14 175 tests (released)
+  * small nits fixed
+  * allow parameters a and p for bigrat
 
 Please send me test-reports, your experiences with this and your ideas - I love
 to hear about my work!
