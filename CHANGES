@@ -32,6 +32,9 @@
   * new option: t or trace 
   * old option: v or version
   * included Math::BigInt::Trace for trace
+2002-03-05 Tels 0.07
+  * new options: a (accuracy) and p (precision)
+  * doc and tests improved quite a lot
 
 Please send me test-reports, your experiences with this and your ideas - I love
 to hear about my work!

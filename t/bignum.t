@@ -10,7 +10,7 @@ BEGIN
   $| = 1;
   chdir 't' if -d 't';
   unshift @INC, '../lib';
-  plan tests => 15;
+  plan tests => 17;
   }
 
 use bignum;
@@ -28,6 +28,12 @@ $x = 2 ** 255; ok (ref($x),'Math::BigInt');
 # see if Math::BigInt constant and upgrading works
 ok (Math::BigInt::bsqrt(12),'3.464101615137754587054892683011744733886');
 ok (sqrt(12),'3.464101615137754587054892683011744733886');
+
+ok (2/3,"0.6666666666666666666666666666666666666667");
+
+#ok (2 ** 0.5, 'NaN');	# should be sqrt(2);
+
+ok (12->bfac(),479001600);
 
 # see if Math::BigFloat constant works
 

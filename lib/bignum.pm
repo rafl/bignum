@@ -1,7 +1,7 @@
 package bignum;
 require 5.005;
 
-$VERSION = '0.06';
+$VERSION = '0.07';
 use Exporter;
 @ISA =       qw( Exporter );
 @EXPORT_OK = qw( ); 
@@ -69,6 +69,7 @@ sub import
   my @import = ( ':constant' );				# drive it w/ constant
   my @a = @_; my $l = scalar @_; my $j = 0;
   my ($ver,$trace);					# version? trace?
+  my ($a,$p);						# accuracy, precision
   for ( my $i = 0; $i < $l ; $i++,$j++ )
     {
 #    if ($_[$i] eq ':constant')
@@ -83,21 +84,33 @@ sub import
       # this causes upgrading
       $upgrade = $_[$i+1];		# or undef to disable
       my $s = 2; $s = 1 if @a-$j < 2;	# avoid "can not modify non-existant..."
-      splice @a, $j, $s; $j -= $s;
+      splice @a, $j, $s; $j -= $s; $i++;
       }
     elsif ($_[$i] eq 'downgrade')
       {
       # this causes downgrading
       $downgrade = $_[$i+1];		# or undef to disable
       my $s = 2; $s = 1 if @a-$j < 2;	# avoid "can not modify non-existant..."
-      splice @a, $j, $s; $j -= $s;
+      splice @a, $j, $s; $j -= $s; $i++;
       }
     elsif ($_[$i] =~ /^lib$/i)
       {
       # this causes a different low lib to take care...
       $lib = $_[$i+1] || '';
       my $s = 2; $s = 1 if @a-$j < 2;	# avoid "can not modify non-existant..."
-      splice @a, $j, $s; $j -= $s;
+      splice @a, $j, $s; $j -= $s; $i++;
+      }
+    elsif ($_[$i] =~ /^(a|accuracy)$/)
+      {
+      $a = $_[$i+1];
+      my $s = 2; $s = 1 if @a-$j < 2;	# avoid "can not modify non-existant..."
+      splice @a, $j, $s; $j -= $s; $i++;
+      }
+    elsif ($_[$i] =~ /^(p|precision)$/)
+      {
+      $p = $_[$i+1];
+      my $s = 2; $s = 1 if @a-$j < 2;	# avoid "can not modify non-existant..."
+      splice @a, $j, $s; $j -= $s; $i++;
       }
     elsif ($_[$i] =~ /^(v|version)$/)
       {
@@ -109,6 +122,7 @@ sub import
       $trace = 1;
       splice @a, $j, 1; $j --;
       }
+    else { die "unknown option $_[$i]"; }
     }
   my $class;
   if ($trace)
@@ -135,6 +149,8 @@ sub import
     }
   $class->import(':constant','downgrade',$downgrade);
 
+  bignum->accuracy($a) if defined $a;
+  bignum->precision($p) if defined $p;
   if ($ver)
     {
     print "Math::BigInt\t v$Math::BigInt::VERSION";
@@ -166,6 +182,50 @@ All operators (inlcuding basic math operations) are overloaded. Integer and
 floating-point constants are created as proper BigInts or BigFloats,
 respectively.
 
+=head2 OPTIONS
+
+bignum recognizes some options that can be passed while loading it via use.
+The options can (currently) be either a single letter form, or the long form.
+The following options exist:
+
+=over 2
+
+=item a or accuracy
+
+This sets the accuracy for all math operations. The argument must be greater
+than or equal to zero. See Math::BigInt's bround() function for details.
+
+	perl -Mbignum,a,50 -le 'print sqrt(20)'
+
+=item p or precision
+
+This sets the precision for all math operations. The argument can be any
+integer. Negative values mean a fixed number of digits after the dot, while
+a positive value rounds to this digit left from the dot. 0 or 1 mean round to
+integer. See Math::BigInt's bfround() function for details.
+
+	perl -Mbignum,p,-50 -le 'print sqrt(20)'
+
+=item t or trace
+
+This enables a trace mode and is primarily for debugging bignum or
+Math::BigInt/Math::BigFloat.
+
+=item l or lib
+
+Load a different math lib, see L<MATH LIBRARY>.
+
+	perl -Mbignum=l,GMP -e 'print 2 ** 512'
+
+Currently there is no way to specify more than one library on the command
+line. This will be hopefully fixed soon ;)
+
+=item v or version
+
+This prints out the name and version of all modules used and then exits.
+
+	perl -Mbignum=v -e ''
+
 =head2 MATH LIBRARY
 
 Math with the numbers is done (by default) by a module called
@@ -184,9 +244,22 @@ Math::BigInt::Bar, and when this also fails, revert to Math::BigInt::Calc:
 
 Please see respective module documentation for further details.
 
+=head2 INTERNAL FORMAT
+
+The numbers are stored as objects, and their internas might change at anytime,
+especially between math operations. The objects also might belong to different
+classes, like Math::BigInt, or Math::BigFLoat. Mixing them together, even
+with normal scalars is not extraordinary, but normal and expected.
+
+You should not depend on the internal format, all accesses must go trough
+accessor methods. E.g. looking at $x->{sign} is not a birght idea since there
+is no guaranty that the object in question has such a hashkey, nor is a hash
+underneath at all.
+
 =head2 SIGN
 
 The sign is either '+', '-', 'NaN', '+inf' or '-inf' and stored seperately.
+You can access it with the sign() method.
 
 A sign of 'NaN' is used to represent the result when input arguments are not
 numbers or as a result of 0/0. '+inf' and '-inf' represent plus respectively
@@ -195,18 +268,32 @@ minus infinity. You will get '+inf' when dividing a positive number by 0, and
 
 =head2 METHODS
 
-Since all numbers are not objects, you can use all functions that are part of
+Since all numbers are now objects, you can use all functions that are part of
 the BigInt or BigFloat API. It is wise to use only the bxxx() notation, and not
 the fxxx() notation, though. This makes you independed on the fact that the
 underlying object might morph into a different class than BigFloat.
 
+=head1 MODULES USED
+
+The following modules are currently used by bignum:
+
+	Math::BigInt::Lite	for speed, and only if it is installed)
+	Math::BigInt
+	Math::BigFloat
+	Math::BigRat		only by bigrat
+
 =head1 EXAMPLES
+
+Some cool command line examples to impress the Python crowd ;)
  
 	perl -Mbignum -le 'print sqrt(33)'
 	perl -Mbignum -le 'print 2*255'
 	perl -Mbignum -le 'print 4.5+2*255'
 	perl -Mbignum -le 'print 3/7 + 5/7 + 8/3'
 	perl -Mbignum -le 'print 123->is_odd()'
+	perl -Mbignum -le 'print log(2)'
+	perl -Mbignum -le 'print 2 ** 0.5'
+	perl -Mbignum=a,65 -le 'print 2 ** 0.2'
 
 =head1 LICENSE
 

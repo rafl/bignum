@@ -146,8 +146,8 @@ All operators (inlcuding basic math operations) are overloaded. Integer and
 floating-point constants are created as proper BigInts or BigFloats,
 respectively.
 
-Other than bignum, this module upgrades to Math::BigRat, meaning that instead
-of 2.5 you will get 2+1/2 as output.
+Other than L<bignum>, this module upgrades to Math::BigRat, meaning that
+instead of 2.5 you will get 2+1/2 as output.
 
 =head2 MATH LIBRARY
 
@@ -197,6 +197,8 @@ This program is free software; you may redistribute it and/or modify it under
 the same terms as Perl itself.
 
 =head1 SEE ALSO
+
+Especially L<bignum>.
 
 L<Math::BigFloat>, L<Math::BigInt>, L<Math::BigRat> and L<Math::Big> as well
 as L<Math::BigInt::BitVect>, L<Math::BigInt::Pari> and  L<Math::BigInt::GMP>.
