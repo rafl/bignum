@@ -42,6 +42,10 @@
   * added tests for loading of Lite
   * version output includes Math::BigInt::Lite when it was used
   * rewritten README and INSTALL document
+2002-03-12 Tels 0.09
+  * added bigint.pm as a better way of perl -MMath::BigInt=:constant
+  * tests for that
+  * bigrat: some typos
 
 Please send me test-reports, your experiences with this and your ideas - I love
 to hear about my work!

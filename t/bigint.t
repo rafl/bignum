@@ -10,10 +10,10 @@ BEGIN
   $| = 1;
   chdir 't' if -d 't';
   unshift @INC, '../lib';
-  plan tests => 4;
+  plan tests => 9;
   }
 
-use bigrat;
+use bigint;
 
 ###############################################################################
 # general tests
@@ -25,26 +25,23 @@ my $x = 5; ok (ref($x),'Math::BigInt');		# :constant
 
 $x = 2 ** 255; ok (ref($x),'Math::BigInt');
 
-# see if Math::BigRat constant works
-ok (1/3, '1/3');
-ok (1/4+1/3,'7/12');
+ok (12->bfac(),479001600);
+ok (9/4,2);
+
+#bignum->accuracy(20);					# causes deep recursion
 
 ###############################################################################
 # accurarcy and precision
 
 # this might change!
-#ok_undef ($Math::BigInt::accuracy);
-#ok_undef ($Math::BigInt::precision);
-#ok_undef ($Math::BigFloat::accuracy);
-#ok_undef ($Math::BigFloat::precision);
-#bigrat->accuracy(5);
-#ok ($Math::BigInt::accuracy,5);
-#ok ($Math::BigFloat::accuracy,5);
-#bigrat->precision(-2);
-#ok_undef ($Math::BigInt::accuracy);
-#ok_undef ($Math::BigFloat::accuracy);
-#ok ($Math::BigInt::precision,-2);
-#ok ($Math::BigFloat::precision,-2);
+
+ok_undef ($Math::BigInt::accuracy);
+ok_undef ($Math::BigInt::precision);
+bigint->accuracy(5);
+ok ($Math::BigInt::accuracy,5);
+bigint->precision(-2);
+ok_undef ($Math::BigInt::accuracy);
+ok ($Math::BigInt::precision,-2);
 
 ###############################################################################
 ###############################################################################

@@ -1,11 +1,16 @@
 
 Known bugs:
 
+* perl -Mbigint -le 'print 4.5+2'
+  MaN
+
+  Reason: bigint.pm does not yet handle (and truncate) floating point
+  constants.
+
 * The testsuite fails when Math::BigIn::Lite v0.04 is installed. This is a
   problem of Lite, not bignum. Expect Lite to be fixed soon ;)
 
-* perl -Mbignum=t -le 'print 2.0' prints
-
+* perl -Mbignum=t -le 'print 2.0'
  Loading Math::BigInt::Trace
  MBI import Math::BigInt::Trace :constant upgrade Math::BigFloat::Trace lib Calc
  Loading Math::BigFloat::Trace

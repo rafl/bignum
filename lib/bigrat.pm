@@ -1,7 +1,7 @@
 package bigrat;
 require 5.005;
 
-$VERSION = '0.03';
+$VERSION = '0.04';
 use Exporter;
 @ISA =       qw( Exporter );
 @EXPORT_OK = qw( ); 
@@ -13,7 +13,7 @@ use strict;
 # These are all alike, and thus faked by AUTOLOAD
 
 my @faked = qw/round_mode accuracy precision div_scale/;
-use vars qw/$AUTOLOAD $_lite/;		# _lite for testsuite
+use vars qw/$VERSION $AUTOLOAD $_lite/;		# _lite for testsuite
 
 sub AUTOLOAD
   {
@@ -25,7 +25,7 @@ sub AUTOLOAD
     {
     if ($n eq $name)
       {
-      *{"bignum::$name"} = sub 
+      *{"bigrat::$name"} = sub 
         {
         my $self = shift;
         no strict 'refs';
@@ -42,7 +42,7 @@ sub AUTOLOAD
  
   # delayed load of Carp and avoid recursion
   require Carp;
-  Carp::croak ("Can't call bignum\-\>$name, not a valid method");
+  Carp::croak ("Can't call bigrat\-\>$name, not a valid method");
   }
 
 sub upgrade
@@ -133,6 +133,7 @@ sub import
   require Math::BigRat;
   if ($ver)
     {
+    print "bigrat\t\t\t v$VERSION\n";
     print "Math::BigInt::Lite\t v$Math::BigInt::Lite::VERSION\n" if $_lite;  
     print "Math::BigInt\t\t v$Math::BigInt::VERSION";
     my $config = Math::BigInt->config();
