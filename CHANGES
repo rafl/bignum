@@ -56,6 +56,13 @@
   * removed the printing of "Loading ..." to STDERR (interfered w/ something)
   * more tests for bigrat and bignum
   * trace.t remvoed due to VMS problems
+2002-08-13 Tels 0.12
+  * INSTALLDIRS => perl
+  * document that use bignum/bigint/bigrat is global, not only in current block
+  * added default exported inf() and NaN() routines to fix the second example:
+    perl -Mbignum -e 'print 1 + inf,"\n"'
+    perl -Mbignum -e 'print inf + inf,"\n"'
+  * tests for inf()/NaN()
 
 Please send me test-reports, your experiences with this and your ideas - I love
 to hear about my work!

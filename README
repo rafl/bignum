@@ -6,7 +6,7 @@
 
 This package attempts to make it easier to write scripts that use
 BigInts/BigFloats in a transparent way. They use the rewritten versiosn of
-Math::BigInt and Math::BigFloat, Math::BigRat (for bigrat) and optionall
+Math::BigInt and Math::BigFloat, Math::BigRat (for bigrat) and optionally
 Math::BigInt::Lite.
 
 It's a great way for writing impressing onliners, which is almost enough
@@ -18,6 +18,8 @@ to justify any Perl package ;) Here are a couple of teasers:
 	perl -Mbignum -le 'print 2 ** 0.5' 
 	perl -Mbignum -le 'print 2 ** 0.2' 
 	perl -Mbignum -le 'print 23->bfac()'
+	perl -Mbignum -le 'print inf+inf'
+	perl -Mbignum -le 'print inf*inf'
  
 Also try the following bigrat's as opposed to bignum:
  
