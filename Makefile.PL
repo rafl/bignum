@@ -5,9 +5,9 @@ WriteMakefile(
     'NAME'		=> 'bignum',
     'VERSION_FROM'	=> 'lib/bignum.pm', # finds $VERSION
     'PREREQ_PM'		=> {
-			Math::BigInt => 1.61,
-			Math::BigFloat => 1.36,
-			Math::BigRat => 0.08,
+			Math::BigInt => 1.62,
+			Math::BigFloat => 1.37,
+			Math::BigRat => 0.09,
 			}, # e.g., Module::Name => 1.1
     'INSTALLDIRS'       => 'perl',
     'LIBS'		=> [''], # e.g., '-lm'

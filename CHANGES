@@ -63,6 +63,10 @@
     perl -Mbignum -e 'print 1 + inf,"\n"'
     perl -Mbignum -e 'print inf + inf,"\n"'
   * tests for inf()/NaN()
+2002-08-24 Tels 0.13
+  * added a LOT to the documentation
+  * tests don't go "huh" anymore
+  * bninfnan.t has the correct setup for testing in the core
 
 Please send me test-reports, your experiences with this and your ideas - I love
 to hear about my work!
