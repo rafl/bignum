@@ -77,6 +77,10 @@
   * allow parameters a and p for bigrat
 2004-03-12 Tels 0.15 175 tests
   * small nitpick fix for Math::BigInt v1.70
+2005-01-01 Tels 0.16 184 tests
+  * option "l", "a", and "p" did not work under -Mbigrat
+  * little doc fixes
+  * add more tests, convert some testfiles to Test::More
 
 Please send me test-reports, your experiences with this and your ideas - I love
 to hear about my work!

@@ -1,12 +1,12 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.38.
+signed via the Module::Signature module, version 0.42.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
 
     % cpansign -v
 
-It would check each file's integrity, as well as the signature's
+It will check each file's integrity, as well as the signature's
 validity.  If "==> Signature verified OK! <==" is not displayed,
 the distribution may already have been compromised, and you should
 not run its Makefile.PL or Build.PL.
@@ -14,19 +14,19 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 
 SHA1 75170ea9cf37a63bcbee8236d4ee29b974484129 BUGS
-SHA1 5d030b7c10b0bfca79e36d9cb8e7f588e1a68382 CHANGES
+SHA1 54b27706c376420f06a71e59a3719c0119ff32f9 CHANGES
 SHA1 79eb2714ac601ef69639106391036c7d341989de INSTALL
 SHA1 d6a6c30ee6d9ba6b9afab8bbf6a25e1b23c744e0 LICENSE
-SHA1 a4e61bf06bb60158b4354fc03a4842b804035e72 MANIFEST
-SHA1 1421b09ad5e01b2ce702338e573b817b95508a11 META.yml
-SHA1 4d5bc92c3e143215429de29a258ac7d539971b88 Makefile.PL
+SHA1 0f06f5908ee05c7a17c9a2a2f761eff889ce67f9 MANIFEST
+SHA1 95c528c0f02b6e966a3dc9ab9733ae5722aad3c4 META.yml
+SHA1 279378bff606db961ac1b35c324e2cc783969506 Makefile.PL
 SHA1 8c630804551c0bb41a1cd03f0c7e9c926e3f86f3 README
 SHA1 ffea651b3975289e76187e8d16e3497d36f754bb TODO
 SHA1 00be5f214bfdc6ec5da910aec62b1fee00d610c1 lib/Math/BigFloat/Trace.pm
 SHA1 dd6afbb42cbe5488433fa4796844eb6955d39b8b lib/Math/BigInt/Trace.pm
-SHA1 a07eb6c4154573ec9353b06ad25a1f61788d90aa lib/bigint.pm
-SHA1 cd38de65f7027dcd1a0a8f15b584f44f40e73648 lib/bignum.pm
-SHA1 04304b5abf0ebed83cdcb1d996c5deb198159ea2 lib/bigrat.pm
+SHA1 be0c72af19ad55f483d4d3e3d1d80191d5eab406 lib/bigint.pm
+SHA1 f193bf7186a4eb3b4a6e5c6f3e31a8854f20e700 lib/bignum.pm
+SHA1 428617fb08fa4eb6ee4b7cb61843cc5c644e4d65 lib/bigrat.pm
 SHA1 e646e9ef4c73bf8d2cf7cee763c2ea9256fb604b t/bigint.t
 SHA1 0fc42edd1463f8a6ee2364e6b136b022062c19e3 t/bignum.t
 SHA1 ecdbff8ce0099157e59e52f24cb4568db67d3416 t/bigrat.t
@@ -36,18 +36,18 @@ SHA1 a1aee41126f0ee4c6ca9de93b52980d50babe62e t/bninfnan.t
 SHA1 5a808b83fdc6977857b9f7fdf87b00a99c48311a t/br_lite.t
 SHA1 1db8e48d01511cae7406eee92fb4328e6b961741 t/brinfnan.t
 SHA1 d9b3b24fbd00b50b7da63f07f1c665951cf89ab4 t/infnan.inc
-SHA1 207829beb0dd35bbac0ea7051852d4e6dc3cb31b t/option_a.t
-SHA1 ed7d301df56da17e4b0cb6609cb8c739ae1b41bf t/option_l.t
-SHA1 5ab9e24919011ad4780078dd83e599063210e6a8 t/option_p.t
+SHA1 b211dad7ef88e0fd70accbde68efc2e190bc40aa t/option_a.t
+SHA1 52a1e5591b95458b3161fea60fee7dc4a5fd6bd4 t/option_l.t
+SHA1 7b4461c5f04a8f48b6b691e4c069c2873758f2f1 t/option_p.t
+SHA1 7a4b92967deaf879232c4b13ec356ca6dba92982 t/ratopt_a.t
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.2-rc1-SuSE (GNU/Linux)
-Comment: When cryptography is outlawed, bayl bhgynjf jvyy unir cevinpl.
+Version: GnuPG v1.2.4 (GNU/Linux)
 
-iQEVAwUBQFHjAncLPEOTuEwVAQH24Qf/SWjBcQCIIFzDeU/7CxE1G4RvIizMxKbP
-bPXMc1jhuruYybr35hbmPXUcBBwUMwEUOIBIVj7AqOxh8eDPx80XHLTalI1uFP1C
-qCxZxLMI8eGIG8HnwpaPzSzIMUK4uadefphKW4qSiZAc0HY4fxw8do6TBTVKkGX7
-6XxP4pOKzZo2Uqxm66mZYuhGR0ipjE93zLU7RME4dJpALW59xarICuZqAJgymstf
-pPX93IrbEKCgrxEGwtPifHcev+i2hKPlWVjPyhdpLMlAf/lmERZZ43eqRhWWlMg+
-gTHSAwxKKHJg0XlgmrIEE2omtNYeUhR/SPPzX3d74vsa5OFbNCNKfQ==
-=vZs+
+iQEVAwUBQdbcaXcLPEOTuEwVAQEeVAf5AfYmxvz2km7aqda0ZdSD4JCIndH17LWG
+kjPaOZJVY7cIZmTXO+sF/NhtZEF8GIyfCUlrKJjJo2Q/VLxftG6DzXFqLlZs5fuJ
+sxlppiem/K6MWiM5SMtMeLeO7dMoKFUk8vlIvEjGB+iw9Ux2MLYnb8ZHy9jVM5tI
+dNrDPTkgOeofhzeOqxeY5d+EYKkdVOrdc4m7mK+jgAYijWXh9BtKx9H3Zfn12cLm
+ND9NHl7SMRJMaQE4gHKmZbsSSG2AXtQ2f2t8NN0++d3HRXsvtK8R8v2iufJvKuDQ
+gFvt0v+jN4DtGBItEyCx6fMBUPmyX7qv1Qn0m1RP9HaBeWaQ1oYwwg==
+=P50M
 -----END PGP SIGNATURE-----

@@ -1,13 +1,12 @@
-# http://module-build.sourceforge.net/META-spec.html
-#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
-name:         bignum
-version:      0.15
+--- #YAML:1.0
+name: bignum
+version: 0.16
 version_from: lib/bignum.pm
-installdirs:  perl
-requires:
-    Math::BigFloat:                1.44
-    Math::BigInt:                  1.7
-    Math::BigRat:                  0.12
-
+license: perl
 distribution_type: module
-generated_by: ExtUtils::MakeMaker version 6.21
+generated_by: bignum version 0.16
+installdirs: perl
+requires:
+  Math::BigFloat: 1.48
+  Math::BigInt: 1.74
+  Math::BigRat: 0.14

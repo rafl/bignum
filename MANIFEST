@@ -16,6 +16,7 @@ t/bigint.t			# does bigint work?
 t/bignum.t			# does bignum work?
 t/bigrat.t			# does bigrat work?
 t/option_a.t			# test use bignum a => 'x';
+t/ratopt_a.t			# test use bigrat a => 'x';
 t/option_p.t			# test use bignum p => 'y';
 t/option_l.t			# test use bignum l => 'lib';
 t/bninfnan.t			# test bignum's exporting inf() and NaN()
