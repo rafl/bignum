@@ -51,6 +51,11 @@
             truncating them to integer, so:
     perl -Mbigint -le 'print 4.5+4.5'
     8
+2002-03-25 Tels 0.11
+  * testsuite failed under Lite due to specific tests for MBI
+  * removed the printing of "Loading ..." to STDERR (interfered w/ something)
+  * more tests for bigrat and bignum
+  * trace.t remvoed due to VMS problems
 
 Please send me test-reports, your experiences with this and your ideas - I love
 to hear about my work!

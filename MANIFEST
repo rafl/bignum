@@ -14,7 +14,6 @@ lib/Math/BigFloat/Trace.pm
 t/bigint.t			# does bigint work?
 t/bignum.t			# does bignum work?
 t/bigrat.t			# does bigrat work?
-t/trace.t			# does bignum=trace work?
 t/option_a.t			# test use bignum a => 'x';
 t/option_p.t			# test use bignum p => 'y';
 t/option_l.t			# test use bignum l => 'lib';
