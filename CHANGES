@@ -75,6 +75,8 @@
 2003-07-04 Tels 0.14 175 tests (released)
   * small nits fixed
   * allow parameters a and p for bigrat
+2004-03-12 Tels 0.15 175 tests
+  * small nitpick fix for Math::BigInt v1.70
 
 Please send me test-reports, your experiences with this and your ideas - I love
 to hear about my work!

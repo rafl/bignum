@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.22.
+signed via the Module::Signature module, version 0.38.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -14,17 +14,18 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 
 SHA1 75170ea9cf37a63bcbee8236d4ee29b974484129 BUGS
-SHA1 0e5ef346a08078608ce9d2eced39468d4d99bf00 CHANGES
+SHA1 5d030b7c10b0bfca79e36d9cb8e7f588e1a68382 CHANGES
 SHA1 79eb2714ac601ef69639106391036c7d341989de INSTALL
 SHA1 d6a6c30ee6d9ba6b9afab8bbf6a25e1b23c744e0 LICENSE
-SHA1 ce35fe62e867fef619d007349471388f8778f2e5 MANIFEST
-SHA1 ea22740fd18ea917e0cb5805f0d9b04341adb60a Makefile.PL
+SHA1 a4e61bf06bb60158b4354fc03a4842b804035e72 MANIFEST
+SHA1 1421b09ad5e01b2ce702338e573b817b95508a11 META.yml
+SHA1 4d5bc92c3e143215429de29a258ac7d539971b88 Makefile.PL
 SHA1 8c630804551c0bb41a1cd03f0c7e9c926e3f86f3 README
 SHA1 ffea651b3975289e76187e8d16e3497d36f754bb TODO
 SHA1 00be5f214bfdc6ec5da910aec62b1fee00d610c1 lib/Math/BigFloat/Trace.pm
 SHA1 dd6afbb42cbe5488433fa4796844eb6955d39b8b lib/Math/BigInt/Trace.pm
-SHA1 28d0a56fef912a8a387a7767f2d0d8c314dcb00a lib/bigint.pm
-SHA1 2aca3f9ddbe57759101d79e4bc2c00107e741f36 lib/bignum.pm
+SHA1 a07eb6c4154573ec9353b06ad25a1f61788d90aa lib/bigint.pm
+SHA1 cd38de65f7027dcd1a0a8f15b584f44f40e73648 lib/bignum.pm
 SHA1 04304b5abf0ebed83cdcb1d996c5deb198159ea2 lib/bigrat.pm
 SHA1 e646e9ef4c73bf8d2cf7cee763c2ea9256fb604b t/bigint.t
 SHA1 0fc42edd1463f8a6ee2364e6b136b022062c19e3 t/bignum.t
@@ -42,11 +43,11 @@ SHA1 5ab9e24919011ad4780078dd83e599063210e6a8 t/option_p.t
 Version: GnuPG v1.2.2-rc1-SuSE (GNU/Linux)
 Comment: When cryptography is outlawed, bayl bhgynjf jvyy unir cevinpl.
 
-iQEVAwUBPzptx3cLPEOTuEwVAQHF6gf8CVTxXHACP0aX6aU1u1q9p5GofadIICRk
-+wtZRfcMftT0VEuBlJ0ks+yKwHpFM3sdJzZ3JGTQk93RyKIFO6NadRcQVWmwjDad
-QiSkaW8TJ8pr4GKoUJg2Ji0Jpss1vONize9wW/IVQOlXG2qWSvK51peW5X0yHudv
-ug+c0f8qTYQys1799GcXa2JZ0sjlARvpJMPXacptaHF/73s3UyBbqy9U1aFkDTTm
-KE31IAA9B9VoHtziBEv8pOdyZuQBj566URbtKi+w4nG/Kc3RGxGhdvxxShb1QbWH
-uEq1fezpXMcP8b1YFn7pKD7k0sbXA72V4rZ9DsoSjKZfwgfM8guM4A==
-=Kphp
+iQEVAwUBQFHjAncLPEOTuEwVAQH24Qf/SWjBcQCIIFzDeU/7CxE1G4RvIizMxKbP
+bPXMc1jhuruYybr35hbmPXUcBBwUMwEUOIBIVj7AqOxh8eDPx80XHLTalI1uFP1C
+qCxZxLMI8eGIG8HnwpaPzSzIMUK4uadefphKW4qSiZAc0HY4fxw8do6TBTVKkGX7
+6XxP4pOKzZo2Uqxm66mZYuhGR0ipjE93zLU7RME4dJpALW59xarICuZqAJgymstf
+pPX93IrbEKCgrxEGwtPifHcev+i2hKPlWVjPyhdpLMlAf/lmERZZ43eqRhWWlMg+
+gTHSAwxKKHJg0XlgmrIEE2omtNYeUhR/SPPzX3d74vsa5OFbNCNKfQ==
+=vZs+
 -----END PGP SIGNATURE-----

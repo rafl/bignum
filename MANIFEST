@@ -24,3 +24,4 @@ t/biinfnan.t			# test bigint's exporting inf() and NaN()
 t/infnan.inc			# actual tests for b(i|r|n)infnan.t
 t/br_lite.t			# loading of Math::BigInt::Lite in bigrat
 t/bn_lite.t			# loading of Math::BigInt::Lite in bignum
+META.yml                                 Module meta-data (added by MakeMaker)
