@@ -81,6 +81,9 @@
   * option "l", "a", and "p" did not work under -Mbigrat
   * little doc fixes
   * add more tests, convert some testfiles to Test::More
+2005-04-03 Tels 0.17 184 tests
+  * remove the default library 'Calc', and let Bigint et. al. decide instead
+    which library to load as default
 
 Please send me test-reports, your experiences with this and your ideas - I love
 to hear about my work!
