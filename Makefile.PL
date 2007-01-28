@@ -1,4 +1,5 @@
 use ExtUtils::MakeMaker;
+use strict;
 
 sub MY::metafile {
   package MY;
@@ -9,9 +10,11 @@ sub MY::metafile {
     return $self->SUPER::metafile_target(@_);
   };
 
+  require YAML::Node;
   my $node = new YAML::Node {};
 
   $node->{name}			= $self->{DISTNAME};
+  $node->{author}		= 'Tels';
   $node->{version}		= $self->{VERSION};
   $node->{version_from}		= $self->{VERSION_FROM};
   $node->{license}		= 'perl';
@@ -32,12 +35,13 @@ WriteMakefile(
     'NAME'		=> 'bignum',
     'VERSION_FROM'	=> 'lib/bignum.pm', # finds $VERSION
     'PREREQ_PM'		=> {
-			Math::BigInt => 1.75,
-			Math::BigFloat => 1.50,
-			Math::BigRat => 0.15,
+			'Math::BigInt' => 1.78,
+			'Math::BigFloat' => 1.52,
+			'Math::BigRat' => 0.16,
 			},
     'INSTALLDIRS'       => 'perl',
-    'LIBS'		=> [''], # e.g., '-lm'
-    'DEFINE'		=> '', # e.g., '-DHAVE_SOMETHING'
-    'INC'		=> '', # e.g., '-I/usr/include/other'
+    'LIBS'		=> [''],
+    'DEFINE'		=> '',
+    'INC'		=> '',
+    'PREREQ_FATAL'	=> 1,	# we cannot work without our prerequisites
 );

@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.42.
+signed via the Module::Signature module, version 0.54.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -12,22 +12,23 @@ the distribution may already have been compromised, and you should
 not run its Makefile.PL or Build.PL.
 
 -----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
 SHA1 75170ea9cf37a63bcbee8236d4ee29b974484129 BUGS
-SHA1 e4e0b3e120a2e2f70951357a9e43b817f203d624 CHANGES
+SHA1 2ca2aec5687d47007c2f4cb14b6b7582660de490 CHANGES
 SHA1 79eb2714ac601ef69639106391036c7d341989de INSTALL
 SHA1 d6a6c30ee6d9ba6b9afab8bbf6a25e1b23c744e0 LICENSE
-SHA1 0f06f5908ee05c7a17c9a2a2f761eff889ce67f9 MANIFEST
-SHA1 816501834b435269e63c75d38d134dc54d091ec4 META.yml
-SHA1 62c11a66c681ee5dacd6e4b6cef80caff27f061f Makefile.PL
+SHA1 613a19131e69befad71208b147f88a79388adedc MANIFEST
+SHA1 031a6ac745edff80ecc511e531c688e8d43dd48a META.yml
+SHA1 b9a3e0484eaf7b24f1519050cf2743c88aa4ba29 Makefile.PL
 SHA1 8c630804551c0bb41a1cd03f0c7e9c926e3f86f3 README
 SHA1 ffea651b3975289e76187e8d16e3497d36f754bb TODO
 SHA1 00be5f214bfdc6ec5da910aec62b1fee00d610c1 lib/Math/BigFloat/Trace.pm
 SHA1 dd6afbb42cbe5488433fa4796844eb6955d39b8b lib/Math/BigInt/Trace.pm
-SHA1 ba7e0facd8bdc121c11fee260c17e0e1d45793ac lib/bigint.pm
-SHA1 90edec4132a36ead1e79c410778052310fac01f3 lib/bignum.pm
-SHA1 b616bb2d55c477d8b9c1e3314b188531a382b92c lib/bigrat.pm
-SHA1 e646e9ef4c73bf8d2cf7cee763c2ea9256fb604b t/bigint.t
+SHA1 8af2c6a6eff2590a6ba0281852c2f6fb1ac14937 lib/bigint.pm
+SHA1 54caee26210db79a5f247217957538f492f74a67 lib/bignum.pm
+SHA1 d480e5a1eff848a7661fc45f32517f7df3489562 lib/bigrat.pm
+SHA1 c9084001c6850f41279fbf849f3d4e08b7ee9be6 t/bigint.t
 SHA1 0fc42edd1463f8a6ee2364e6b136b022062c19e3 t/bignum.t
 SHA1 ecdbff8ce0099157e59e52f24cb4568db67d3416 t/bigrat.t
 SHA1 d15e56f77d7a8b2b4d04c6725edaaad431951707 t/biinfnan.t
@@ -39,15 +40,17 @@ SHA1 d9b3b24fbd00b50b7da63f07f1c665951cf89ab4 t/infnan.inc
 SHA1 b211dad7ef88e0fd70accbde68efc2e190bc40aa t/option_a.t
 SHA1 52a1e5591b95458b3161fea60fee7dc4a5fd6bd4 t/option_l.t
 SHA1 7b4461c5f04a8f48b6b691e4c069c2873758f2f1 t/option_p.t
+SHA1 38f406188e0f8eb94bf5856b2814f801358459d1 t/pod.t
+SHA1 0c579d126dece198ed3261524f67c49ab954e95d t/pod_cov.t
 SHA1 7a4b92967deaf879232c4b13ec356ca6dba92982 t/ratopt_a.t
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.4 (GNU/Linux)
+Version: GnuPG v1.4.2 (GNU/Linux)
 
-iQEVAwUBQk+ryXcLPEOTuEwVAQHM4Qf+PNRRJuM3t4nGd1TNGCfuhslp8G0SoU3+
-QQRYK4d/mDpBQ6pwE+qGE6g240LjJwhPlAdMvAmtqU8MW3SlRLn0UTIvTpwKkIYl
-jnJZDd7BT0+wqzQ5vRjrnR37Q64qzsB/hMsaxX4W6xwxr0Pyu7l+sn7Crjcfx8/6
-IBaNC+xVsR7C46WA4MjYKWWah5oNl6D2pPmxRi0DuVye6Rg4ECBx+NV/OB80e6Bg
-6R6Rz9CqNqCb58jvBjZhfjTIwS44ZzZOCRYoO3/K/RJhXP0lmGlPM3qkzbIEWFYO
-7bbjfW40OJRG+rXyEoGBqznBnT8frttlECwD1nwefKzEkI/3mHjo+g==
-=9+bT
+iQEVAwUBRbyTB3cLPEOTuEwVAQL78Af/S2d9FFe6HeLe0q7DGD7OdDm1LqK3ykmc
+jyHZ6LROWZ1y+k/Jgmh8WsBF3LZnaoiQ7ykl/M+xxMGP5grXdXMh7/gQ6B8uqUiH
+bfdSJxct4G3EYlncJdYYznSeXEqryRSpMobx//LUyO1QZbsyFA0J37GLrwYrjYxX
+D70ets4IXDAWOHQ92BC5hI1ZzQebpY9PG5+GIUEyaPVR68A1OZZylMsfJNSxuHe3
+aoElqzSklpRjHvy3qQlnfk1zuZ0MO97OCpVDsWYR1vzuzcsZwNA4fRqYaWJc+ezk
+jdIGDtq9La5i7y/PVtwofSkRdoBd0tqtI2lmXoQK+pGnwTDhKn6pfw==
+=gTnH
 -----END PGP SIGNATURE-----

@@ -1,4 +1,12 @@
 
+2007-01-27 Tels 0.18 194 tests
+  * require Math::BigInt 1.78
+  * add support for octal constants
+  * use PREREQ_FATAL
+  * add POD tests
+
+Older changelog:
+
 2002-01-29 Tels 0.01
   * first version
 2002-01-29 Tels 0.02

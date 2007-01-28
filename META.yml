@@ -1,12 +1,13 @@
---- #YAML:1.0
+---
 name: bignum
-version: 0.17
+author: Tels
+version: 0.18
 version_from: lib/bignum.pm
 license: perl
 distribution_type: module
-generated_by: bignum version 0.17
+generated_by: bignum version 0.18
 installdirs: perl
 requires:
-  Math::BigFloat: 1.5
-  Math::BigInt: 1.75
-  Math::BigRat: 0.15
+  Math::BigFloat: 1.52
+  Math::BigInt: 1.78
+  Math::BigRat: 0.16
