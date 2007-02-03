@@ -1,30 +1,40 @@
-CHANGES
 BUGS
+Build.PL
+CHANGES
+inc/Module/Install.pm
+inc/Module/Install/Base.pm
+inc/Module/Install/Build.pm
+inc/Module/Install/Can.pm
+inc/Module/Install/Fetch.pm
+inc/Module/Install/Makefile.pm
+inc/Module/Install/Metadata.pm
+inc/Module/Install/Win32.pm
+inc/Module/Install/WriteAll.pm
 INSTALL
-README
-LICENSE
-MANIFEST
-SIGNATURE
-TODO
-Makefile.PL
 lib/bigint.pm
 lib/bignum.pm
 lib/bigrat.pm
-lib/Math/BigInt/Trace.pm
 lib/Math/BigFloat/Trace.pm
+lib/Math/BigInt/Trace.pm
+LICENSE
+Makefile.PL
+MANIFEST
+META.yml			Module meta-data (added by MakeMaker)
+README
+SIGNATURE
 t/bigint.t			# does bigint work?
 t/bignum.t			# does bignum work?
 t/bigrat.t			# does bigrat work?
-t/option_a.t			# test use bignum a => 'x';
-t/ratopt_a.t			# test use bigrat a => 'x';
-t/option_p.t			# test use bignum p => 'y';
-t/option_l.t			# test use bignum l => 'lib';
-t/bninfnan.t			# test bignum's exporting inf() and NaN()
-t/brinfnan.t			# test bigrat's exporting inf() and NaN()
 t/biinfnan.t			# test bigint's exporting inf() and NaN()
-t/infnan.inc			# actual tests for b(i|r|n)infnan.t
-t/br_lite.t			# loading of Math::BigInt::Lite in bigrat
 t/bn_lite.t			# loading of Math::BigInt::Lite in bignum
+t/bninfnan.t			# test bignum's exporting inf() and NaN()
+t/br_lite.t			# loading of Math::BigInt::Lite in bigrat
+t/brinfnan.t			# test bigrat's exporting inf() and NaN()
+t/infnan.inc			# actual tests for b(i|r|n)infnan.t
+t/option_a.t			# test use bignum a => 'x';
+t/option_l.t			# test use bignum l => 'lib';
+t/option_p.t			# test use bignum p => 'y';
 t/pod.t
 t/pod_cov.t
-META.yml                                 Module meta-data (added by MakeMaker)
+t/ratopt_a.t			# test use bigrat a => 'x';
+TODO

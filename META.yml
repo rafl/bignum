@@ -1,13 +1,17 @@
----
-name: bignum
-author: Tels
-version: 0.18
-version_from: lib/bignum.pm
-license: perl
+abstract: Transparent BigNumber support for Perl
+author: Tels <nospam-abuse@bloodgate.com>
+build_requires: 
+  Test::More: 0.47
 distribution_type: module
-generated_by: bignum version 0.18
-installdirs: perl
-requires:
-  Math::BigFloat: 1.52
-  Math::BigInt: 1.78
-  Math::BigRat: 0.16
+generated_by: Module::Install version 0.64
+license: gpl
+name: bignum
+no_index: 
+  directory: 
+    - inc
+    - t
+requires: 
+  Math::BigInt: 1.79
+  Math::BigRat: 0.17
+  perl: 5.6.2
+version: 0.19

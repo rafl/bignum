@@ -1,5 +1,5 @@
 package bigrat;
-use 5.005;
+use 5.006002;
 
 $VERSION = '0.09';
 require Exporter;
@@ -200,7 +200,7 @@ bigrat - Transparent BigNumber/BigRational support for Perl
 
 =head1 DESCRIPTION
 
-All operators (inlcuding basic math operations) are overloaded. Integer and
+All operators (including basic math operations) are overloaded. Integer and
 floating-point constants are created as proper BigInts or BigFloats,
 respectively.
 
@@ -258,12 +258,12 @@ underlying object might morph into a different class than BigFloat.
 
 =item inf()
 
-A shortcut to return Math::BigInt->binf(). Usefull because Perl does not always
+A shortcut to return Math::BigInt->binf(). Useful because Perl does not always
 handle bareword C<inf> properly.
 
 =item NaN()
 
-A shortcut to return Math::BigInt->bnan(). Usefull because Perl does not always
+A shortcut to return Math::BigInt->bnan(). Useful because Perl does not always
 handle bareword C<NaN> properly.
 
 =item upgrade()
@@ -296,7 +296,7 @@ following work:
         print $x + 1, " ", $y,"\n";     # prints 10 9
 
 but calling any method that modifies the number directly will result in
-B<both> the original and the copy beeing destroyed:
+B<both> the original and the copy being destroyed:
 
         $x = 9; $y = $x;
         print $x->badd(1), " ", $y,"\n";        # prints 10 10

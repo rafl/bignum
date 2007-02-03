@@ -1,47 +1,30 @@
-use ExtUtils::MakeMaker;
+
 use strict;
 
-sub MY::metafile {
-  package MY;
-  my $self = shift;
-  if (!eval { require YAML; 1 })
-  {
-    warn ("YAML not installed, 'make dist' will not override META.yml");
-    return $self->SUPER::metafile_target(@_);
-  };
+# Load the Module::Install bundled in ./inc/
+use inc::Module::Install;
 
-  require YAML::Node;
-  my $node = new YAML::Node {};
+# The name of your distribution
+name		'bignum';
 
-  $node->{name}			= $self->{DISTNAME};
-  $node->{author}		= 'Tels';
-  $node->{version}		= $self->{VERSION};
-  $node->{version_from}		= $self->{VERSION_FROM};
-  $node->{license}		= 'perl';
-  $node->{distribution_type}	= 'module';
-  $node->{generated_by}		= "$self->{DISTNAME} version $self->{VERSION}";
-  $node->{installdirs}		= 'perl';
-  $node->{requires}		= $self->{PREREQ_PM};
+# Get most of the details from the primary module
+all_from	'lib/bignum.pm';
 
-  my $dump = YAML::Dump( $node );
+requires	'perl'		=> "5.006002";
+requires	'Math::BigInt'	=> 1.79;
+requires	'Math::BigRat'	=> 0.17;
 
-  $dump =~ s/^(.*)$/\t\$(NOECHO) \$(ECHO) "$1" >>META.yml/gm;
-  $dump =~ s/>>META\.yml/>META.yml/;
+build_requires	'Test::More'	=> 0.47;
 
-  return "metafile:\n$dump";
-}
+license		'gpl';
 
-WriteMakefile(
-    'NAME'		=> 'bignum',
-    'VERSION_FROM'	=> 'lib/bignum.pm', # finds $VERSION
-    'PREREQ_PM'		=> {
-			'Math::BigInt' => 1.78,
-			'Math::BigFloat' => 1.52,
-			'Math::BigRat' => 0.16,
-			},
-    'INSTALLDIRS'       => 'perl',
-    'LIBS'		=> [''],
-    'DEFINE'		=> '',
-    'INC'		=> '',
-    'PREREQ_FATAL'	=> 1,	# we cannot work without our prerequisites
-);
+author		'Tels <nospam-abuse@bloodgate.com>';
+
+# install this over the version in the Perl core
+makemaker_args INSTALLDIRS => 'perl';
+
+# We cannot work without our prerequisites
+makemaker_args PREREQ_FATAL => 1;
+
+# Generate the Makefile
+WriteAll;
