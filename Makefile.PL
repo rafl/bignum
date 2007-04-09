@@ -11,8 +11,8 @@ name		'bignum';
 all_from	'lib/bignum.pm';
 
 requires	'perl'		=> "5.006002";
-requires	'Math::BigInt'	=> 1.79;
-requires	'Math::BigRat'	=> 0.17;
+requires	'Math::BigInt'	=> 1.82;
+requires	'Math::BigRat'	=> 0.18;
 
 build_requires	'Test::More'	=> 0.47;
 
@@ -21,10 +21,7 @@ license		'gpl';
 author		'Tels <nospam-abuse@bloodgate.com>';
 
 # install this over the version in the Perl core
-makemaker_args INSTALLDIRS => 'perl';
-
-# We cannot work without our prerequisites
-makemaker_args PREREQ_FATAL => 1;
+install_as_core;
 
 # Generate the Makefile
 WriteAll;

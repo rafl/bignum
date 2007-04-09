@@ -19,9 +19,11 @@ lib/Math/BigInt/Trace.pm
 LICENSE
 Makefile.PL
 MANIFEST
+MANIFEST.SKIP
 META.yml			Module meta-data (added by MakeMaker)
 README
 SIGNATURE
+t/bigexp.t			# test for overloading of exp()
 t/bigint.t			# does bigint work?
 t/bignum.t			# does bignum work?
 t/bigrat.t			# does bigrat work?

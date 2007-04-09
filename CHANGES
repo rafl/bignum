@@ -1,4 +1,19 @@
 
+2007-04-09 Tels 0.20 198 tests
+  * require Math::BigInt v1.82
+  * require Math::BigRat v0.18
+  * add a test for bug #18025:
+    "bignum/bigrat can lead to a number that is both 1 and 0"
+  * POD test needs Test::Pod::Coverage 1.08 to work
+
+2007-02-03 Tels 0.19 194 tests
+  * require Math::BigInt v1.79
+  * require Perl v5.6.2
+  * add Build.PL
+  * use Module::Install
+  * remove PREREQ_FATAL since the toolchain is broken
+  * apply spelling fixes to POD
+
 2007-01-27 Tels 0.18 194 tests
   * require Math::BigInt 1.78
   * add support for octal constants
