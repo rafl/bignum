@@ -6,7 +6,7 @@ build_requires:
 distribution_type: module
 generated_by: Module::Install version 0.65
 installdirs: perl
-license: gpl
+license: perl
 meta-spec: 
   url: http://module-build.sourceforge.net/META-spec-v1.3.html
   version: 1.3
@@ -16,7 +16,7 @@ no_index:
     - inc
     - t
 requires: 
-  Math::BigInt: 1.82
-  Math::BigRat: 0.18
+  Math::BigInt: 1.83
+  Math::BigRat: 0.19
   perl: 5.6.2
-version: 0.20
+version: 0.21

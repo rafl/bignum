@@ -11,12 +11,12 @@ name		'bignum';
 all_from	'lib/bignum.pm';
 
 requires	'perl'		=> "5.006002";
-requires	'Math::BigInt'	=> 1.82;
-requires	'Math::BigRat'	=> 0.18;
+requires	'Math::BigInt'	=> 1.83;
+requires	'Math::BigRat'	=> 0.19;
 
 build_requires	'Test::More'	=> 0.47;
 
-license		'gpl';
+license		'perl';
 
 author		'Tels <nospam-abuse@bloodgate.com>';
 

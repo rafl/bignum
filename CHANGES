@@ -1,4 +1,10 @@
 
+2007-04-17 Tels 0.21 205 tests
+  * require Math::BigInt v1.83
+  * require Math::BigRat v0.19
+  * add support for "try" and "only"
+  * fix licence field back to "perl"
+
 2007-04-09 Tels 0.20 198 tests
   * require Math::BigInt v1.82
   * require Math::BigRat v0.18
