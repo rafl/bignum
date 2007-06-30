@@ -23,15 +23,19 @@ MANIFEST.SKIP
 META.yml			Module meta-data (added by MakeMaker)
 README
 SIGNATURE
+t/big_e_pi.t
 t/bigexp.t			# test for overloading of exp()
 t/bigint.t			# does bigint work?
 t/bignum.t			# does bignum work?
 t/bigrat.t			# does bigrat work?
+t/bii_e_pi.t
 t/biinfnan.t			# test bigint's exporting inf() and NaN()
+t/bir_e_pi.t
 t/bn_lite.t			# loading of Math::BigInt::Lite in bignum
 t/bninfnan.t			# test bignum's exporting inf() and NaN()
 t/br_lite.t			# loading of Math::BigInt::Lite in bigrat
 t/brinfnan.t			# test bigrat's exporting inf() and NaN()
+t/in_effect.t
 t/infnan.inc			# actual tests for b(i|r|n)infnan.t
 t/option_a.t			# test use bignum a => 'x';
 t/option_l.t			# test use bignum l => 'lib';
@@ -39,4 +43,7 @@ t/option_p.t			# test use bignum p => 'y';
 t/pod.t
 t/pod_cov.t
 t/ratopt_a.t			# test use bigrat a => 'x';
+t/scope_f.t
+t/scope_i.t
+t/scope_r.t
 TODO

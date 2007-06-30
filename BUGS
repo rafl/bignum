@@ -1,7 +1,8 @@
 
 Known bugs:
 
-* use big(num|int|rat) is global, not per in the scope like use integer;
+* print 2 + 4.5,"\n";			# produces "6.5" but should be actually 65/10
+
 * perl -Mbignum=t -le 'print 2.0'
  Loading Math::BigInt::Trace
  MBI import Math::BigInt::Trace :constant upgrade Math::BigFloat::Trace lib Calc

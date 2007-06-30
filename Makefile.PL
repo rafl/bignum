@@ -11,10 +11,10 @@ name		'bignum';
 all_from	'lib/bignum.pm';
 
 requires	'perl'		=> "5.006002";
-requires	'Math::BigInt'	=> 1.83;
+requires	'Math::BigInt'	=> 1.87;
 requires	'Math::BigRat'	=> 0.19;
 
-build_requires	'Test::More'	=> 0.47;
+build_requires	'Test::More'	=> 0.62;
 
 license		'perl';
 

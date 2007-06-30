@@ -21,9 +21,11 @@ SKIP:
     $@ ? 0 : 1;
     };
 
+  my $trustme = { trustme => [ 'unimport' ] };
+
   for my $m (qw/bignum bigint bigrat/)
     {
-    pod_coverage_ok( $m, "All our ${m}s are covered" );
+    pod_coverage_ok( $m, $trustme, "All our ${m}s are covered" );
     }
   }
 

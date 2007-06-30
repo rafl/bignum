@@ -1,4 +1,19 @@
 
+2007-06-30 Tels 0.22 301 tests
+  * make the pragmas lexical, so that "no bigint;" etc. works
+  * make "use bigint; use bignum;" not warn about redefining "inf" and "NaN"
+    This also means a "use bigint;" will not override any already existing
+    "inf" or "NaN" routine
+  * require Math::BigInt v1.87
+  * fix #27059: t/option_l.t fails
+  * on Perl 5.9.4 or later: "overload" hex() and oct() with lexical routines
+    that also handle arbitrary big integers
+  * for all Perls: make "use bigint qw/hex oct/" export global hex() and oct()
+    routines that work with big integers
+  * make bignum.pm and bigrat.pm re-use code from bigint.pm
+  * add exportable bpi() and bexp() methods
+  * add exportable PI and e constants
+
 2007-04-17 Tels 0.21 205 tests
   * require Math::BigInt v1.83
   * require Math::BigRat v0.19
