@@ -1,4 +1,10 @@
 
+2008-04-05 Tels 0.23 301 tests
+  * require Math::BigInt v1.88
+  * require Math::BigRat v0.21
+  * update bundles Module::Install
+  * require Perl 5.006 (vs. 5.006002), should work with that
+
 2007-06-30 Tels 0.22 301 tests
   * make the pragmas lexical, so that "no bigint;" etc. works
   * make "use bigint; use bignum;" not warn about redefining "inf" and "NaN"
