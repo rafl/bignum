@@ -20,7 +20,6 @@ MANIFEST
 MANIFEST.SKIP
 META.yml			Module meta-data (added by MakeMaker)
 README
-SIGNATURE
 t/big_e_pi.t
 t/bigexp.t			# test for overloading of exp()
 t/bigint.t			# does bigint work?

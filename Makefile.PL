@@ -24,5 +24,7 @@ author		'Tels <nospam-abuse@bloodgate.com>';
 # install this over the version in the Perl core
 install_as_core;
 
+sign;
+
 # Generate the Makefile
 WriteAll;
