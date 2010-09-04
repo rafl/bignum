@@ -1,3 +1,6 @@
+2010-09-04 rafl 0.24 301 tests
+  * Apply changes from blead perl
+    Mostly POD fixes and minor test tweaks.
 
 2008-04-05 Tels 0.23 301 tests
   * require Math::BigInt v1.88
