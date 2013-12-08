@@ -19,6 +19,8 @@ build_requires	'Test::More'	=> 0.62;
 
 license		'perl';
 
+repository      'https://github.com/rafl/bignum';
+
 author		'Tels <nospam-abuse@bloodgate.com>';
 
 # install this over the version in the Perl core
