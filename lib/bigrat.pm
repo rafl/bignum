@@ -11,9 +11,9 @@ use strict;
 use overload;
 use bigint ();
 
-############################################################################## 
+##############################################################################
 
-BEGIN 
+BEGIN
   {
   *inf = \&bigint::inf;
   *NaN = \&bigint::NaN;
@@ -36,7 +36,7 @@ sub AUTOLOAD
     {
     if ($n eq $name)
       {
-      *{"bigrat::$name"} = sub 
+      *{"bigrat::$name"} = sub
         {
         my $self = shift;
         no strict 'refs';
@@ -51,7 +51,7 @@ sub AUTOLOAD
       return &$name;
       }
     }
- 
+
   # delayed load of Carp and avoid recursion
   require Carp;
   Carp::croak ("Can't call bigrat\-\>$name, not a valid method");
@@ -72,7 +72,7 @@ sub in_effect
 
 #############################################################################
 
-sub import 
+sub import
   {
   my $self = shift;
 
@@ -159,7 +159,7 @@ sub import
     require Math::BigInt if $_lite == 0;        # not already loaded?
     $class = 'Math::BigInt';                    # regardless of MBIL or not
     }
-  push @import, $lib_kind => $lib if $lib ne ''; 
+  push @import, $lib_kind => $lib if $lib ne '';
   # Math::BigInt::Trace or plain Math::BigInt
   $class->import(@import, upgrade => $upgrade);
 
@@ -172,7 +172,7 @@ sub import
   if ($ver)
     {
     print "bigrat\t\t\t v$VERSION\n";
-    print "Math::BigInt::Lite\t v$Math::BigInt::Lite::VERSION\n" if $_lite;  
+    print "Math::BigInt::Lite\t v$Math::BigInt::Lite::VERSION\n" if $_lite;
     print "Math::BigInt\t\t v$Math::BigInt::VERSION";
     my $config = Math::BigInt->config();
     print " lib => $config->{lib} v$config->{lib_version}\n";
