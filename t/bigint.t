@@ -9,7 +9,7 @@ use bigint qw/hex oct/;
 ###############################################################################
 # _constant tests
 
-foreach (qw/ 
+foreach (qw/
   123:123
   123.4:123
   1.4:1
@@ -34,7 +34,7 @@ foreach (qw/
   is (bigint::_float_constant("$x"),"$y");
   }
 
-foreach (qw/ 
+foreach (qw/
   0100:64
   0200:128
   0x100:256
