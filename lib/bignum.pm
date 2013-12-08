@@ -5,15 +5,15 @@ $VERSION = '0.32';
 use Exporter;
 @ISA 		= qw( bigint );
 @EXPORT_OK	= qw( PI e bexp bpi hex oct );
-@EXPORT 	= qw( inf NaN ); 
+@EXPORT 	= qw( inf NaN );
 
 use strict;
 use overload;
 use bigint ();
 
-############################################################################## 
+##############################################################################
 
-BEGIN 
+BEGIN
   {
   *inf = \&bigint::inf;
   *NaN = \&bigint::NaN;
@@ -36,7 +36,7 @@ sub AUTOLOAD
     {
     if ($n eq $name)
       {
-      *{"bignum::$name"} = sub 
+      *{"bignum::$name"} = sub
         {
         my $self = shift;
         no strict 'refs';
@@ -50,7 +50,7 @@ sub AUTOLOAD
       return &$name;
       }
     }
- 
+
   # delayed load of Carp and avoid recursion
   require Carp;
   Carp::croak ("Can't call bignum\-\>$name, not a valid method");
@@ -71,7 +71,7 @@ sub in_effect
 
 #############################################################################
 
-sub import 
+sub import
   {
   my $self = shift;
 
@@ -166,7 +166,7 @@ sub import
     require Math::BigInt if $_lite == 0;	# not already loaded?
     $class = 'Math::BigInt';			# regardless of MBIL or not
     }
-  push @import, $lib_kind => $lib if $lib ne ''; 
+  push @import, $lib_kind => $lib if $lib ne '';
   # Math::BigInt::Trace or plain Math::BigInt
   $class->import(@import, upgrade => $upgrade);
 
@@ -245,7 +245,7 @@ All operators (including basic math operations) are overloaded. Integer and
 floating-point constants are created as proper BigInts or BigFloats,
 respectively.
 
-If you do 
+If you do
 
         use bignum;
 
@@ -303,7 +303,7 @@ appropriately. This means that:
 
 will work correctly. These mixed cases don't do always work when using
 Math::BigInt or Math::BigFloat alone, or at least not in the way normal Perl
-scalars work. 
+scalars work.
 
 If you do want to work with large integers like under C<use integer;>, try
 C<use bigint;>:

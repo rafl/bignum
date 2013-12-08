@@ -49,7 +49,7 @@ sub import
     {
     push @a, $_ if $_ ne ':constant';
     }
-  overload::constant float => sub { $self->new(shift); }; 
+  overload::constant float => sub { $self->new(shift); };
 
   Math::BigFloat->import(@a);		# need it for subclasses
 #  $self->export_to_level(1,$self,@_);		# need this ?

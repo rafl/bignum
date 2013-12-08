@@ -10,7 +10,7 @@ use Exporter;
 use strict;
 use overload;
 
-############################################################################## 
+##############################################################################
 
 # These are all alike, and thus faked by AUTOLOAD
 
@@ -27,7 +27,7 @@ sub AUTOLOAD
     {
     if ($n eq $name)
       {
-      *{"bigint::$name"} = sub 
+      *{"bigint::$name"} = sub
         {
         my $self = shift;
         no strict 'refs';
@@ -40,7 +40,7 @@ sub AUTOLOAD
       return &$name;
       }
     }
- 
+
   # delayed load of Carp and avoid recursion
   require Carp;
   Carp::croak ("Can't call bigint\-\>$name, not a valid method");
@@ -72,7 +72,7 @@ sub _float_constant
 
   # some simple cases first
   return $float if ($float =~ /^[+-]?[0-9]+$/);		# '+123','-1','0' etc
-  return $float 
+  return $float
     if ($float =~ /^[+-]?[0-9]+\.?[eE]\+?[0-9]+$/);	# 123e2, 123.e+2
   return '0' if ($float =~ /^[+-]?[0]*\.[0-9]+$/);	# .2, 0.2, -.1
   if ($float =~ /^[+-]?[0-9]+\.[0-9]*$/)		# 1., 1.23, -1.2 etc
@@ -182,7 +182,7 @@ sub _override
   $overridden++;
   }
 
-sub import 
+sub import
   {
   my $self = shift;
 
@@ -497,7 +497,7 @@ minus infinity. You will get '+inf' when dividing a positive number by 0, and
 
 Since all numbers are now objects, you can use all functions that are part of
 the BigInt API. You can only use the bxxx() notation, and not the fxxx()
-notation, though. 
+notation, though.
 
 But a warning is in order. When using the following to make a copy of a number,
 only a shallow copy will be made.
