@@ -12,21 +12,21 @@ Math::BigInt::Lite.
 It's a great way for writing impressing onliners, which is almost enough
 to justify any Perl package ;) Here are a couple of teasers:
 
-	perl -Mbignum=v 
+	perl -Mbignum=v
 	perl -Mbignum -le 'print 2 ** 252'
-	perl -Mbignum=a,25 -le 'print sqrt(2)' 
-	perl -Mbignum -le 'print 2 ** 0.5' 
-	perl -Mbignum -le 'print 2 ** 0.2' 
+	perl -Mbignum=a,25 -le 'print sqrt(2)'
+	perl -Mbignum -le 'print 2 ** 0.5'
+	perl -Mbignum -le 'print 2 ** 0.2'
 	perl -Mbignum -le 'print 23->bfac()'
 	perl -Mbignum -le 'print inf+inf'
 	perl -Mbignum -le 'print inf*inf'
- 
+
 Also try the following bigrat's as opposed to bignum:
- 
-	perl -Mbigrat -le 'print 2/3+5/7' 
+
+	perl -Mbigrat -le 'print 2/3+5/7'
 	perl -Mbigrat -le 'print 1/3*3'		
 
-	perl -Mbigint -le 'print 4.5 + 4.5' 
+	perl -Mbigint -le 'print 4.5 + 4.5'
 	perl -Mbigint -le 'print 123e-2+123e3'		
 
 A more usefull usage of these modules is extending Perl to provide transparent
